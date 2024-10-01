@@ -4,19 +4,34 @@ import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
 const ToiletPaperRoll: React.FC = () => {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const groupRef = useRef<THREE.Group>(null);
 
   useFrame(() => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += 0.01;
+    if (groupRef.current) {
+      groupRef.current.rotation.y += 0.01;
     }
   });
 
   return (
-    <mesh ref={meshRef}>
-      <cylinderGeometry args={[0.5, 0.5, 1, 32]} />
-      <meshStandardMaterial color="#f0f0f0" />
-    </mesh>
+    <group ref={groupRef} rotation={[Math.PI / 4, 0, 0]}>
+      {/* Cardboard tube */}
+      <mesh position={[0, 0, 0]}>
+        <cylinderGeometry args={[0.2, 0.2, 1.1, 32]} />
+        <meshStandardMaterial color="#8B4513" />
+      </mesh>
+
+      {/* Toilet paper roll */}
+      <mesh position={[0, 0, 0]}>
+        <cylinderGeometry args={[0.5, 0.5, 1, 32]} />
+        <meshStandardMaterial color="#F0F0F0" />
+      </mesh>
+
+      {/* Paper texture */}
+      <mesh position={[0, 0, 0]}>
+        <cylinderGeometry args={[0.501, 0.501, 1.01, 32, 1, true]} />
+        <meshStandardMaterial color="#FFFFFF" side={THREE.DoubleSide} wireframe />
+      </mesh>
+    </group>
   );
 };
 
@@ -35,7 +50,7 @@ const Hero: React.FC = () => {
         </div>
         <div className="md:w-1/2">
           <div className="w-full h-64 md:h-96">
-            <Canvas camera={{ position: [0, 0, 3] }}>
+            <Canvas camera={{ position: [0, 2, 4], fov: 50 }}>
               <ambientLight intensity={0.5} />
               <pointLight position={[10, 10, 10]} />
               <ToiletPaperRoll />
