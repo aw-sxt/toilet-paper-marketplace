@@ -2,9 +2,9 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-800 text-white p-8">
-      <div className="container mx-auto">
-        <div className="flex flex-wrap justify-between">
+    <footer className="bg-gray-800 text-white p-8 w-full h-full"> {/* Full width and height */}
+      <div className="container mx-auto h-full">
+        <div className="flex flex-wrap justify-between h-full">
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
             <h3 className="text-xl font-bold mb-2">SoftRoll</h3>
             <p className="text-gray-400">Providing comfort, one roll at a time.</p>
