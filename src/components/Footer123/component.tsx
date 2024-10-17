@@ -33,13 +33,11 @@ const Footer: React.FC = () => {
               </button>
             </form>
           </div>
-        </div>
-        <div className="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
-          &copy; 2023 SoftRoll. All rights reserved.
+
         </div>
       </div>
     </footer>
   );
 };
 
-export default Footer;
+export { Footer as component };

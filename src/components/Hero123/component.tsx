@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, SpotLight } from '@react-three/drei';
 import * as THREE from 'three';
@@ -49,6 +49,8 @@ const ToiletPaperRoll: React.FC = () => {
 };
 
 const Hero: React.FC = () => {
+  const [s, setS] = useState(false);
+  
   return (
     <div className="bg-black py-16 text-white w-full h-full">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center h-full">
@@ -85,4 +87,4 @@ const Hero: React.FC = () => {
   );
 };
 
-export default Hero;
+export { Hero as component }
